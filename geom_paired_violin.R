@@ -54,10 +54,6 @@ GeomPairedViolin <-
                    Check out packages {vioplot} and {see} for alternative ways of plotting split violins", call. = FALSE)
             }
             
-            object <<- data
-            
-            object_split <<- split(data, data$group)
-            
             data <- do.call(rbind, lapply(split(data, data$group), function(.group) {
               .group$ymin <- min(.group$y)
               .group$ymax <- max(.group$y)
