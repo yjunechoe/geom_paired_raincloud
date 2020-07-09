@@ -59,7 +59,7 @@ GeomPairedViolin <-
               .group$ymax <- max(.group$y)
               .group$xmin <- .group$x
               # flips the first group (negative width)
-              .group$xmax <- .group$x + .group$width / ifelse(.group$group[1] == 1, -2, 2)
+              .group$xmax <- .group$x + .group$width / ifelse(all(.group$group == 1), -2, 2)
               .group
             }))
 
@@ -76,7 +76,7 @@ GeomPairedViolin <-
             
             newdata <- rbind(newdata, newdata[1,])
             
-            .grobName("geom_violinhalf", GeomPolygon$draw_panel(newdata, panel_scales, coord))
+            .grobName("geom_paired_violin", GeomPolygon$draw_panel(newdata, panel_scales, coord))
           },
           
           draw_key = draw_key_polygon,
