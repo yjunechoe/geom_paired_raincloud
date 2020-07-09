@@ -47,10 +47,10 @@ GeomPairedViolin <-
           setup_data = function(data, params) {
             data$width <- data$width %||%
               params$width %||% (resolution(data$x, FALSE) * 0.9)
-            
-            # Break if the grouping isn't a pair
+                        
+            # Warning if the grouping isn't a pair
             n_group <- length(unique(data$group))
-            
+
             if(n_group %% 2 != 0){
               warning("geom_paired_violin is only useful for visualizing groupings of length 2.
                    Check out packages {vioplot} and {see} for alternative ways of plotting split violins")
@@ -60,7 +60,7 @@ GeomPairedViolin <-
               .group$ymin <- min(.group$y)
               .group$ymax <- max(.group$y)
               .group$xmin <- .group$x
-              # flips the first group (negative width)
+              # flips the first half-violin in each panel (negative width)
               .group$xmax <- .group$x + .group$width / ifelse(all(.group$group %in% 1:(n_group/2)), -2, 2)
               .group
             }))
