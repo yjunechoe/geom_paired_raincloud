@@ -1,4 +1,4 @@
-#' Paired violin plot
+#' Paired raincloud plot
 #'
 #' Create a paired raincloud plot (useful for visualizing difference between experimental conditions tested on the same subjects or items).
 #'
@@ -33,7 +33,7 @@ geom_paired_raincloud <- function(mapping = NULL, data = NULL, stat = "ydensity"
 }
 
 
-#' GeomPairedViolin
+#' GeomPairedRaincloud
 #'
 #' @rdname ggplot2-ggproto
 #' @format NULL
