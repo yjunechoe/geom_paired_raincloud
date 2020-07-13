@@ -1,6 +1,6 @@
 #' Paired violin plot
 #'
-#' Create a paired violin plot (useful for visualizing difference between experimental conditions tested on the same subjects or items).
+#' Create a paired raincloud plot (useful for visualizing difference between experimental conditions tested on the same subjects or items).
 #'
 #' Adopted from the geom_violinhalf() source code from the {see} package
 #'
@@ -13,14 +13,14 @@
 #'
 #' @import ggplot2
 #' @export
-geom_paired_violin <- function(mapping = NULL, data = NULL, stat = "ydensity",
-                            position = "dodge", trim = TRUE, scale = "area",
-                            show.legend = NA, inherit.aes = TRUE, ...) {
+geom_paired_raincloud <- function(mapping = NULL, data = NULL, stat = "ydensity",
+                                  position = "dodge", trim = TRUE, scale = "area",
+                                  show.legend = NA, inherit.aes = TRUE, ...) {
   layer(
     data = data,
     mapping = mapping,
     stat = stat,
-    geom = GeomPairedViolin,
+    geom = GeomPairedRaincloud,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,
@@ -42,7 +42,7 @@ geom_paired_violin <- function(mapping = NULL, data = NULL, stat = "ydensity",
 #' @importFrom dplyr mutate group_by arrange desc
 #' @importFrom rlang .data
 #' @keywords internal
-GeomPairedViolin <-
+GeomPairedRaincloud <-
   ggproto("GeomViolinHalf", Geom,
           setup_data = function(data, params) {
             data$width <- data$width %||%
@@ -52,8 +52,8 @@ GeomPairedViolin <-
             n_group <- length(unique(data$group))
 
             if(n_group %% 2 != 0){
-              warning("geom_paired_violin is only useful for visualizing groupings of length 2.
-                   Check out packages {vioplot} and {see} for alternative ways of plotting split violins")
+              warning("geom_paired_raincloud is only useful for visualizing groupings of length 2.
+                      Check out packages {vioplot} and {see} for alternative ways of plotting split violins/rainclouds")
             }
             
             data <- do.call(rbind, lapply(split(data, data$group), function(.group) {
