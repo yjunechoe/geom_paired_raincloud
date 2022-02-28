@@ -5,4 +5,4 @@
 
 To use `geom_paired_raincloud()`, source this repo with `devtools::source_url("https://raw.githubusercontent.com/yjunechoe/geom_paired_raincloud/master/geom_paired_raincloud.R")`
 
-Details and motivation in this blogpost: https://yjunechoe.netlify.app/post/geom-paired-raincloud/
+Details and motivation in this blogpost: https://yjunechoe.github.io/posts/2020-07-13-geom-paired-raincloud/
